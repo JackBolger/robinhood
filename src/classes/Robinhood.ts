@@ -114,6 +114,7 @@ export default class Robinhood {
 
     async request(url: string) {
         const urlObject = new URL(url, "https://trading.robinhood.com");
+        const path = urlObject.pathname + urlObject.search;
 
         const [
             method,
@@ -124,14 +125,14 @@ export default class Robinhood {
             this.#getMethod(),
             this.#getHeaders(),
             this.#getBody(),
-            this.#getAuthenticationHeaders(urlObject.pathname)
+            this.#getAuthenticationHeaders(path)
         ];
 
         for (const [key, value] of Object.entries(authenticationHeaders)) {
             headers[key] = value;
         }
 
-        return await fetch(`https://trading.robinhood.com${urlObject.pathname}${urlObject.search || ""}`,
+        return await fetch(`https://trading.robinhood.com${path || ""}`,
             {
                 method: method,
                 headers: headers,
