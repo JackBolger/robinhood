@@ -1,0 +1,22 @@
+{
+  "name": "robinhood",
+  "version": "1.0.0",
+  "description": "Create an authenticated connection to the Robinhood APIs",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackBolger/robinhood.git"
+  },
+  "author": "Jack Bolger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JackBolger/robinhood/issues"
+  },
+  "homepage": "https://github.com/JackBolger/robinhood#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.1"
+  }
+}
