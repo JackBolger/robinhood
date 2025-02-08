@@ -2,9 +2,11 @@
   "name": "api-robinhood",
   "version": "1.0.1",
   "description": "Create an authenticated connection to the Robinhood APIs",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "publish": "tsc && npm publish"
   },
   "repository": {
     "type": "git",
