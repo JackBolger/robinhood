@@ -1,1 +1,1 @@
-require("./classes/Robinhood");
+module.exports = require("./classes/Robinhood");
