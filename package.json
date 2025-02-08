@@ -1,5 +1,5 @@
 {
-  "name": "robinhood",
+  "name": "api-robinhood",
   "version": "1.0.0",
   "description": "Create an authenticated connection to the Robinhood APIs",
   "main": "src/index.ts",
