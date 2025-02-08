@@ -10,12 +10,22 @@ export default class Robinhood {
     private body: string;
 
     constructor(
-        apiKey: string = null,
-        privateKey: string = null,
-        method: string = "GET",
-        headers: {} = {},
-        body: {} | string = null
+        options: {
+            apiKey: string,
+            privateKey: string,
+            method: string,
+            headers: {},
+            body: {} | string
+        } = {
+            apiKey: "",
+            privateKey: "",
+            method: "GET",
+            headers: {},
+            body: null
+        }
     ) {
+        const { apiKey, privateKey, method, headers, body } = options;
+        
         if (apiKey) this.setApiKey(apiKey);
         if (privateKey) this.setPrivateKey(privateKey);
         if (method) this.setMethod(method);
