@@ -2,6 +2,14 @@
 
 Easily authenticate and interact with Robinhood's API using the `api-robinhood` package. This package authenticates to Robhinhood APIs usiing your private key and API key generated for your account. You can read more about the Robinhood APIs at [this link](https://docs.robinhood.com/crypto/trading/).
 
+## ❤️ Support the Project  
+
+If this package has been helpful to you, consider showing your support!
+
+[💰 Donate via Venmo @Jack_Bolger_](https://venmo.com/Jack_Bolger_)
+
+Your generosity helps maintain and improve this project—thank you! 🙌
+
 ## Installation
 
 Install the package via npm:
