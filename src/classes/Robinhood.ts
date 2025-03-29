@@ -42,7 +42,7 @@ export default class Robinhood {
     }
 
     setMethod(method: string) {
-        this.method = method;
+        this.method = method.toUpperCase();
     }
 
     setHeaders(headers: {}) {
@@ -89,18 +89,17 @@ export default class Robinhood {
         if (!privateKey) throw new Error("Private key is required.");
         if (!apiKey) throw new Error("API Key is requried.");
 
-        const now = new Date();
-        const timestamp = Math.floor(now.getTime() / 1000).toString();
+        const timestamp = Math.floor(Date.now() / 1000).toString();
 
-        const message = `${apiKey}${timestamp}${path}${method}${body || ""}`;
+        const message = `${apiKey}${timestamp}${path}${method}${body ? JSON.stringify(body) : ""}`;
 
         try {
 
             // Convert private key back from Base64 to UInt8Array
             const privateKeyByteArray = base64.toByteArray(privateKey);
-    
+                
             // Sign the message using the private key
-            const signature = nacl.sign.detached(Buffer.from(message), privateKeyByteArray);
+            const signature = nacl.sign.detached(Buffer.from(message, "utf-8"), privateKeyByteArray);
     
             return {
                 'x-signature': base64.fromByteArray(signature),
@@ -114,7 +113,9 @@ export default class Robinhood {
 
     async request(url: string) {
         const urlObject = new URL(url, "https://trading.robinhood.com");
-        const path = urlObject.pathname + urlObject.search;
+        const path = urlObject.pathname + 
+            (urlObject.pathname.endsWith("/") ? "" : "/") +
+            urlObject.search;
 
         const [
             method,
