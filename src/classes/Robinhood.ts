@@ -159,3 +159,5 @@ export default class Robinhood {
         )
     }
 }
+
+module.exports = Robinhood;
