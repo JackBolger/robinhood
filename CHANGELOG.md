@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.2] - 2025-05-31
+### Fixed
+- Corrected the TypeScript typing for the Robinhood class constructor to allow undefined.
+
 ## [1.3.0] - 2025-05-31
 ### Added
 - Support for both **ESM** (`import ... from`) and **CommonJS** (`require()`) module imports.  
