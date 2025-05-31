@@ -66,6 +66,10 @@ export default class Robinhood {
     }
 
     #getHeaders() {
+        if (!this.headers) {
+            this.setHeaders({});
+        }
+
         return this.headers;
     }
 
@@ -111,11 +115,24 @@ export default class Robinhood {
         }
     }
 
-    async request(url: string) {
+    async request(
+        url: string,
+        options: {
+            method?: string;
+            headers?: any;
+            body?: any;
+        } = {
+            method: "GET"
+        }
+    ) {
         const urlObject = new URL(url, "https://trading.robinhood.com");
         const path = urlObject.pathname + 
             (urlObject.pathname.endsWith("/") ? "" : "/") +
             urlObject.search;
+
+        if (options?.method) this.setMethod(options.method);
+        if (options?.headers) this.setHeaders(options.headers);
+        if (options?.body) this.setBody(options.body);
 
         const [
             method,
@@ -142,5 +159,3 @@ export default class Robinhood {
         )
     }
 }
-
-module.exports = Robinhood;

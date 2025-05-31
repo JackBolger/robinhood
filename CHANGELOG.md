@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0] - 2025-05-31  
+### Added  
+- Introduced a default HTTP method for API requests when none is specified, improving ease of use.  
+- Added support for passing a second `options` parameter to the request function, allowing users to specify request details such as `method`, `headers`, and `body`, similar to the JavaScript `fetch` API.  
+- Enhanced request flexibility by enabling full control over HTTP request configuration via the new `options` parameter.
+
 ## [1.3.2] - 2025-05-31
 ### Fixed
 - Corrected the TypeScript typing for the Robinhood class constructor to allow undefined.
