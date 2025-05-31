@@ -1,1 +1,2 @@
-module.exports = require("./classes/Robinhood");
+import Robinhood from "./classes/Robinhood";
+export default Robinhood;
