@@ -11,11 +11,11 @@ export default class Robinhood {
 
     constructor(
         options: {
-            apiKey: string,
-            privateKey: string,
-            method: string,
-            headers: {},
-            body: {} | string
+            apiKey?: string,
+            privateKey?: string,
+            method?: string,
+            headers?: {},
+            body?: {} | string
         } = {
             apiKey: "",
             privateKey: "",
