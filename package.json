@@ -1,6 +1,6 @@
 {
   "name": "api-robinhood",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Create an authenticated connection to the Robinhood APIs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,5 +24,9 @@
   "homepage": "https://github.com/JackBolger/robinhood#readme",
   "devDependencies": {
     "@types/node": "^22.13.1"
+  },
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "tweetnacl": "^1.0.3"
   }
 }
