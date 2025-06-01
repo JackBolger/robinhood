@@ -1,6 +1,12 @@
 # Changelog
 
-## [1.4.0] - 2025-05-31  
+## [1.5.0] - 2025-05-31
+### Fixed
+- **Improved ESM and CommonJS Compatibility**:
+  - The build process now correctly generates separate entry points for **ESM** (`module`) and **CommonJS** (`main`) in `package.json`.
+  - Ensured that TypeScript typings are properly resolved for both import styles.
+
+## [1.4.0] - 2025-05-31
 ### Added  
 - Introduced a default HTTP method for API requests when none is specified, improving ease of use.  
 - Added support for passing a second `options` parameter to the request function, allowing users to specify request details such as `method`, `headers`, and `body`, similar to the JavaScript `fetch` API.  
