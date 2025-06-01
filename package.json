@@ -1,6 +1,6 @@
 {
   "name": "api-robinhood",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Create an authenticated connection to the Robinhood APIs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

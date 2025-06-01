@@ -1,21 +1,24 @@
-const nacl = require("tweetnacl");
-const base64 = require("base64-js");
+import nacl from "tweetnacl";
+import base64 from "base64-js";
+
+type Headers = Record<string, string>;
+type Body = Record<string, any> | string;
 
 export default class Robinhood {
     private privateKey: string;
     private apiKey: string;
 
     private method: string;
-    private headers: {};
-    private body: string;
+    private headers: Headers;
+    private body: Body;
 
     constructor(
         options: {
             apiKey?: string,
             privateKey?: string,
             method?: string,
-            headers?: {},
-            body?: {} | string
+            headers?: Headers,
+            body?: Body
         } = {
             apiKey: "",
             privateKey: "",
@@ -45,27 +48,27 @@ export default class Robinhood {
         this.method = method.toUpperCase();
     }
 
-    setHeaders(headers: {}) {
+    setHeaders(headers: Headers) {
         this.headers = headers;
     }
 
-    setBody(body: {} | string) {
+    setBody(body: Body) {
         this.body = typeof body === "string" ? body : JSON.stringify(body);
     }
 
-    #getPrivateKey() {
+    #getPrivateKey(): string | undefined {
         return this.privateKey;
     }
 
-    #getApiKey() {
+    #getApiKey(): string | undefined {
         return this.apiKey;
     }
 
-    #getMethod() {
+    #getMethod(): string | undefined {
         return this.method;
     }
 
-    #getHeaders() {
+    #getHeaders(): Headers | undefined {
         if (!this.headers) {
             this.setHeaders({});
         }
@@ -73,7 +76,7 @@ export default class Robinhood {
         return this.headers;
     }
 
-    #getBody() {
+    #getBody(): Body | undefined {
         return this.body;
     }
 
@@ -119,8 +122,8 @@ export default class Robinhood {
         url: string,
         options: {
             method?: string;
-            headers?: any;
-            body?: any;
+            headers?: Headers;
+            body?: Body;
         } = {
             method: "GET"
         }
@@ -150,14 +153,19 @@ export default class Robinhood {
             headers[key] = value;
         }
 
-        return await fetch(`https://trading.robinhood.com${path || ""}`,
-            {
-                method: method,
-                headers: headers,
-                body: body
-            }
-        )
+        const params: {
+            method: string;
+            headers: Headers;
+            body?: string;
+        } = {
+            method: method,
+            headers: headers
+        }
+
+        if (typeof body !== "undefined") {
+            params.body = typeof body === "string" ? body : JSON.stringify(body);
+        }
+
+        return await fetch(`https://trading.robinhood.com${path || ""}`, params)
     }
 }
-
-module.exports = Robinhood;

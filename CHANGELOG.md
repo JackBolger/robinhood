@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.1] - 2025-06-01
+### Fixed
+- **Updated TypeScript typings for the `Robinhood` class**:
+  - Refined and corrected type definitions for the `Robinhood` class to improve type safety and developer experience.
+  - Adjusted constructor and method typings for better integration with TypeScript tooling and stricter type checks.
+
 ## [1.5.0] - 2025-05-31
 ### Fixed
 - **Improved ESM and CommonJS Compatibility**:
